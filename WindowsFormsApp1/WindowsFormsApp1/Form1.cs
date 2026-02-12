@@ -28,9 +28,9 @@ namespace WindowsFormsApp1
             {
                 conn.Open();
                 DataTable tbl = new DataTable();
-                MySqlDataAdapter dataAdp = new MySqlDataAdapter("select * from price", conn);
+                MySqlDataAdapter dataAdp = new MySqlDataAdapter("select * from ITTest", conn);
                 dataAdp.Fill(tbl);
-                //dataGridView1.DataSource = tbl;
+                dataGridView1.DataSource = tbl;
                 conn.Close();
             }
             catch (MySqlException mse)
@@ -43,7 +43,8 @@ namespace WindowsFormsApp1
         {
             string str0 = textBox1.Text;
             string str1 = textBox2.Text;
-            int str2 = int.Parse(textBox3.Text);
+            //int str2 = int.Parse(textBox3.Text);
+            string str3 = textBox4.Text;
             string connStr = "server=172.16.2.26;user id=tateno;password=ae21215926;database=uta";
             MySqlConnection conn = new MySqlConnection(connStr);
             try
@@ -51,11 +52,11 @@ namespace WindowsFormsApp1
                 conn.Open();
                 DataTable tbl = new DataTable();
                 DataTable tbl1 = new DataTable();
-                MySqlDataAdapter dataAdp = new MySqlDataAdapter("update price set price=" + str2 + " where id = " + str0, conn);
+                MySqlDataAdapter dataAdp = new MySqlDataAdapter("update ITTest set ITTest=" + str3 + " where id = " + str0, conn);
                 dataAdp.Fill(tbl);
-                MySqlDataAdapter dataAdp1 = new MySqlDataAdapter("select * from price", conn);
+                MySqlDataAdapter dataAdp1 = new MySqlDataAdapter("select * from ITTest", conn);
                 dataAdp1.Fill(tbl1);
-                //dataGridView1.DataSource = tbl1;
+                dataGridView1.DataSource = tbl1;
                 conn.Close();
             }
             catch (MySqlException mse)
